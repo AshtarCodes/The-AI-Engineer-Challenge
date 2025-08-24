@@ -1,13 +1,182 @@
 ---
 description: When designing a frontend or frontend components.
-globs: 
+globs:
 alwaysApply: false
 ---
+
 ### Rules for Frontend
 
 - You must pay attention to visual clarity and contrast. Do not place white text on a white background.
-- You must ensure the UX is pleasant. Boxes should grow to fit their contents, etc. 
+- You must ensure the UX is pleasant. Boxes should grow to fit their contents, etc.
 - When asking the user for sensitive information - you must use password style text-entry boxes in the UI.
-- You should use Next.js as it works best with Vercel. 
-- This frontend will ultimately be deployed on Vercel, but it should be possible to test locally. 
+- You should use Next.js as it works best with Vercel.
+- This frontend will ultimately be deployed on Vercel, but it should be possible to test locally.
 - Always provide users with a way to run the created UI once you have created it.
+
+### Details about this application
+
+- The user is an astronaut sitting in a cockpit from a first person point of view. There is a chat interface on the cockpit center console. The user will be able to chat with the spacex dragon capsule to get information about the spaceship.
+- This might include includes technical information about the spacecraft, any easter-eggs or fun facts about it, its' mission history, and made up information like the current speed the user is traveling at and the trajectory. Don't worry about it too much, the backend will be loaded with information to be able to answer these questions. Just worry about handling the response from the api and displaying it.
+- The user's messages will be sent to the api in this repo which is found in api/app.py and request are sent to the '/api/chat' route.
+- If you need help designing the cockpit, you can obtain any information you need about the specs of the aircraft at this wikipedia link: https://en.wikipedia.org/wiki/SpaceX_Dragon_2
+- There should be some minimal view of space from the cockpit, with some stars and perhaps a celestial body or two visible in the distance.
+- The frontend should be a dark, high-contrast “SpaceX Dragon capsule cockpit” vibe: graphite blacks, cold whites, cyan instrument glow, warning amber/red.
+
+### Theme Guidelines
+
+    •	Avoid pure black; use very dark blue-black surfaces for legibility.
+    •	Use cyan only for interactive or critical telemetry, not body text.
+    •	Focus rings glow cyan; warnings glow amber, faults glow red.
+    •	Tight letter-spacing on headings; monospace for telemetry readouts.
+    •	Borders are subtle (#18233A); rely on elevation + glass blur for layering.
+    •	Iconography: thin, outlined, with cyan hover glow.
+
+### Suggested Theme information
+
+```yaml
+theme:
+  name: dragon-capsule
+  mode: dark
+
+  colors:
+    # Surfaces
+    surface: "#0B0E14" # deep space black (avoid pure #000 for eye comfort)
+    surface-alt: "#10141F"
+    surface-elev1: "#121826"
+    surface-elev2: "#172036"
+    overlay: "rgba(8,12,20,0.6)" # HUD glass
+
+    # Text
+    text-primary: "#E6F1FF" # cold white
+    text-secondary: "#A5B4C8"
+    text-dim: "#6B7A90"
+    text-invert: "#0A0F18"
+
+    # Brand / Accents (instrument glow)
+    accent: "#00E0FF" # cyan
+    accent-strong: "#00B8E6"
+    accent-muted: "#66F0FF"
+
+    # States
+    success: "#1ED760" # system nominal green
+    warning: "#FFC247" # caution amber
+    danger: "#FF4D4F" # fault red
+    info: "#6AA8FF" # status blue
+
+    # Component fills
+    field-bg: "#0E1420"
+    field-border: "#1D2638"
+    card-bg: "#0E121B"
+    button-primary: "#00B8E6"
+    button-on-primary: "#071018"
+    button-ghost: "transparent"
+    button-ghost-border: "#233049"
+    divider: "#192236"
+
+    # Focus ring / selection
+    focus-ring: "#00E0FF"
+    selection-bg: "rgba(0,224,255,0.20)"
+
+  radii:
+    xs: 4
+    sm: 6
+    md: 10
+    lg: 14
+    pill: 999
+
+  spacing:
+    xs: 4
+    sm: 8
+    md: 12
+    lg: 16
+    xl: 24
+    xxl: 32
+
+  typography:
+    font-family: '"Inter", "SF Pro Text", "DDIN", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif'
+    font-family-mono: '"JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace'
+    size-xs: 12
+    size-sm: 13
+    size-md: 14
+    size-lg: 16
+    size-xl: 20
+    size-2xl: 24
+    tracking-tight: -0.01em
+    tracking-normal: 0
+    tracking-wide: 0.02em
+
+  elevation: # subtle, sharp shadows like overhead instrument lighting
+    e1: "0 1px 0 rgba(255,255,255,0.03), 0 1px 8px rgba(0,0,0,0.35)"
+    e2: "0 1px 0 rgba(255,255,255,0.05), 0 6px 18px rgba(0,0,0,0.45)"
+    e3: "0 1px 0 rgba(255,255,255,0.07), 0 10px 28px rgba(0,0,0,0.55)"
+
+  effects:
+    glass: "backdrop-blur(6px) saturate(1.05)"
+    glow-accent: "0 0 0 2px rgba(0,224,255,0.20), 0 0 12px rgba(0,224,255,0.35)"
+    glow-warning: "0 0 0 2px rgba(255,194,71,0.20), 0 0 10px rgba(255,194,71,0.30)"
+    glow-danger: "0 0 0 2px rgba(255,77,79,0.20), 0 0 10px rgba(255,77,79,0.30)"
+
+  components:
+    button:
+      height: 40
+      radius: md
+      primary:
+        bg: "@colors.button-primary"
+        fg: "@colors.button-on-primary"
+        hover-bg: "#00CFFF"
+        focus-ring: "@colors.focus-ring"
+        shadow: "@effects.glow-accent"
+      ghost:
+        bg: "@colors.button-ghost"
+        border: "@colors.button-ghost-border"
+        fg: "@colors.text-primary"
+        hover-bg: "rgba(35,48,73,0.35)"
+        focus-ring: "@colors.focus-ring"
+
+    input:
+      bg: "@colors.field-bg"
+      fg: "@colors.text-primary"
+      border: "@colors.field-border"
+      radius: sm
+      focus-border: "@colors.accent"
+      focus-ring: "@colors.focus-ring"
+      placeholder: "@colors.text-dim"
+
+    card:
+      bg: "@colors.card-bg"
+      radius: lg
+      shadow: "@elevation.e2"
+      border: "#18233A"
+
+    tab:
+      indicator: "@colors.accent"
+      hover: "rgba(0,224,255,0.12)"
+      active-fg: "@colors.text-primary"
+      inactive-fg: "@colors.text-secondary"
+
+  charts:
+    grid: "#1A2436"
+    axis: "#2B3A55"
+    line: "@colors.accent"
+    fill: "rgba(0,224,255,0.15)"
+```
+
+```css
+:root[data-theme="dragon-capsule"] {
+  --surface: #0b0e14;
+  --surface-alt: #10141f;
+  --text: #e6f1ff;
+  --text-2: #a5b4c8;
+  --accent: #00e0ff;
+  --accent-strong: #00b8e6;
+  --warning: #ffc247;
+  --danger: #ff4d4f;
+  --field-bg: #0e1420;
+  --field-border: #1d2638;
+  --divider: #192236;
+  --focus: #00e0ff;
+  --card-bg: #0e121b;
+  --shadow-1: 0 1px 8px rgba(0, 0, 0, 0.35);
+  --glow-accent: 0 0 0 2px rgba(0, 224, 255, 0.2), 0 0 12px rgba(0, 224, 255, 0.35);
+}
+```
