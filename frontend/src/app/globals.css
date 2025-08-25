@@ -1,6 +1,7 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
-:root[data-theme="dragon-capsule"] {
+:root {
   --surface: #0b0e14;
   --surface-alt: #10141f;
   --surface-elev1: #121826;

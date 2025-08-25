@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface InstrumentPanelProps {
-  position: 'top' | 'bottom' | 'left' | 'right';
+  position: "top" | "bottom" | "left" | "right";
 }
 
 interface TelemetryData {
@@ -29,14 +29,23 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTelemetry(prev => ({
+      setTelemetry((prev) => ({
         altitude: prev.altitude + (Math.random() - 0.5) * 100,
         velocity: prev.velocity + (Math.random() - 0.5) * 50,
         temperature: prev.temperature + (Math.random() - 0.5) * 0.5,
         pressure: prev.pressure + (Math.random() - 0.5) * 2,
-        oxygen: Math.max(95, Math.min(100, prev.oxygen + (Math.random() - 0.5) * 0.5)),
-        battery: Math.max(80, Math.min(100, prev.battery + (Math.random() - 0.5) * 0.3)),
-        fuel: Math.max(90, Math.min(100, prev.fuel + (Math.random() - 0.5) * 0.2)),
+        oxygen: Math.max(
+          95,
+          Math.min(100, prev.oxygen + (Math.random() - 0.5) * 0.5)
+        ),
+        battery: Math.max(
+          80,
+          Math.min(100, prev.battery + (Math.random() - 0.5) * 0.3)
+        ),
+        fuel: Math.max(
+          90,
+          Math.min(100, prev.fuel + (Math.random() - 0.5) * 0.2)
+        ),
       }));
     }, 2000);
 
@@ -123,12 +132,12 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
   );
 
   switch (position) {
-    case 'top':
+    case "top":
       return renderTopPanel();
-    case 'bottom':
+    case "bottom":
       return renderBottomPanel();
-    case 'left':
-    case 'right':
+    case "left":
+    case "right":
       return renderSidePanel();
     default:
       return null;
@@ -139,13 +148,26 @@ interface TelemetryDisplayProps {
   label: string;
   value: string;
   unit: string;
-  status: 'nominal' | 'warning' | 'danger';
+  status: "nominal" | "warning" | "danger";
 }
 
-const TelemetryDisplay = ({ label, value, unit, status }: TelemetryDisplayProps) => (
+const TelemetryDisplay = ({
+  label,
+  value,
+  unit,
+  status,
+}: TelemetryDisplayProps) => (
   <div className="text-center">
     <div className="text-xs text-text-dim mb-1">{label}</div>
-    <div className={`text-lg font-mono ${status === 'nominal' ? 'text-text-primary' : status === 'warning' ? 'text-warning' : 'text-danger'}`}>
+    <div
+      className={`text-lg font-mono ${
+        status === "nominal"
+          ? "text-text-primary"
+          : status === "warning"
+          ? "text-warning"
+          : "text-danger"
+      }`}
+    >
       {value}
       <span className="text-sm text-text-secondary ml-1">{unit}</span>
     </div>
@@ -154,12 +176,20 @@ const TelemetryDisplay = ({ label, value, unit, status }: TelemetryDisplayProps)
 
 interface StatusIndicatorProps {
   label: string;
-  status: 'nominal' | 'warning' | 'danger';
+  status: "nominal" | "warning" | "danger";
 }
 
 const StatusIndicator = ({ label, status }: StatusIndicatorProps) => (
   <div className="flex items-center space-x-2">
-    <div className={`w-2 h-2 rounded-full ${status === 'nominal' ? 'bg-success' : status === 'warning' ? 'bg-warning' : 'bg-danger'} animate-pulse`}></div>
+    <div
+      className={`w-2 h-2 rounded-full ${
+        status === "nominal"
+          ? "bg-success"
+          : status === "warning"
+          ? "bg-warning"
+          : "bg-danger"
+      } animate-pulse`}
+    ></div>
     <span className="text-xs font-mono text-text-secondary">{label}</span>
   </div>
 );
@@ -168,7 +198,7 @@ interface GaugeDisplayProps {
   label: string;
   value: number;
   unit: string;
-  color: 'success' | 'warning' | 'danger';
+  color: "success" | "warning" | "danger";
 }
 
 const GaugeDisplay = ({ label, value, unit, color }: GaugeDisplayProps) => (
@@ -196,12 +226,20 @@ const GaugeDisplay = ({ label, value, unit, color }: GaugeDisplayProps) => (
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className={`text-sm font-mono ${color === 'success' ? 'text-success' : color === 'warning' ? 'text-warning' : 'text-danger'}`}>
+        <span
+          className={`text-sm font-mono ${
+            color === "success"
+              ? "text-success"
+              : color === "warning"
+              ? "text-warning"
+              : "text-danger"
+          }`}
+        >
           {Math.round(value)}
+          {unit}
         </span>
       </div>
     </div>
-    <div className="text-xs text-text-secondary mt-1">{unit}</div>
   </div>
 );
 
