@@ -196,8 +196,6 @@ Keep responses informative but engaging, and maintain the cockpit atmosphere.`,
         <div ref={messagesEndRef} />
       </div>
 
-
-
       {/* Input Area */}
       <div className="p-4 border-t border-divider">
         <div className="flex space-x-3">
