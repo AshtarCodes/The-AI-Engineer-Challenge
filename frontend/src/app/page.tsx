@@ -26,7 +26,6 @@ export default function CockpitPage() {
 
       {/* Cockpit Grid Layout */}
       <div className="relative w-full h-full grid grid-cols-12 grid-rows-12 gap-0 z-10">
-        
         {/* Top Instrument Panel - spans full width, top 2 rows */}
         <div className="col-span-12 row-span-2 bg-gradient-to-b from-surface-elev2/80 to-transparent backdrop-blur-sm border-b border-accent/30">
           <InstrumentPanel position="top" />
@@ -90,4 +89,3 @@ export default function CockpitPage() {
     </div>
   );
 }
-
