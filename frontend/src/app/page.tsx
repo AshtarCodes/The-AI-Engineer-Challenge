@@ -54,7 +54,7 @@ export default function CockpitPage() {
         </div>
 
         {/* System Status Indicator */}
-        <div className="absolute top-4 right-4 flex items-center space-x-2 z-20">
+        <div className="absolute top-4 right-4 flex items-center space-x-2 z-20 gap-2">
           <div
             className={`w-3 h-3 rounded-full ${
               isConnected ? "bg-success" : "bg-warning"

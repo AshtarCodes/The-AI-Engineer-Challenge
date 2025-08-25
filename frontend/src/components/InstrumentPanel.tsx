@@ -54,7 +54,7 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
 
   const renderTopPanel = () => (
     <div className="flex justify-between items-center h-full px-8">
-      <div className="flex space-x-8">
+      <div className="flex space-x-8 gap-4">
         <TelemetryDisplay
           label="ALTITUDE"
           value={`${Math.round(telemetry.altitude).toLocaleString()} m`}
@@ -74,7 +74,7 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
           status="nominal"
         />
       </div>
-      <div className="flex space-x-4">
+      <div className="flex gap-2">
         <StatusIndicator label="LIFE SUPPORT" status="nominal" />
         <StatusIndicator label="NAVIGATION" status="nominal" />
         <StatusIndicator label="COMMUNICATIONS" status="nominal" />
@@ -83,8 +83,8 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
   );
 
   const renderBottomPanel = () => (
-    <div className="flex justify-between items-center h-full px-8">
-      <div className="flex space-x-8">
+    <div className="flex justify-between items-center h-full px-8 mx-4">
+      <div className="flex space-x-8 gap-2">
         <GaugeDisplay
           label="OXYGEN"
           value={telemetry.oxygen}
@@ -180,7 +180,7 @@ interface StatusIndicatorProps {
 }
 
 const StatusIndicator = ({ label, status }: StatusIndicatorProps) => (
-  <div className="flex items-center space-x-2">
+  <div className="flex items-center gap-2">
     <div
       className={`w-2 h-2 rounded-full ${
         status === "nominal"
@@ -190,7 +190,7 @@ const StatusIndicator = ({ label, status }: StatusIndicatorProps) => (
           : "bg-danger"
       } animate-pulse`}
     ></div>
-    <span className="text-xs font-mono text-text-secondary">{label}</span>
+    <div className="text-xs font-mono text-text-secondary">{label}</div>
   </div>
 );
 
