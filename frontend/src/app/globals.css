@@ -1,13 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root[data-theme="dragon-capsule"] {
   --surface: #0b0e14;
   --surface-alt: #10141f;
   --surface-elev1: #121826;
   --surface-elev2: #172036;
-  --overlay: rgba(8,12,20,0.6);
+  --overlay: rgba(8, 12, 20, 0.6);
   --text-primary: #e6f1ff;
   --text-secondary: #a5b4c8;
   --text-dim: #6b7a90;
@@ -28,7 +26,7 @@
   --button-ghost-border: #233049;
   --divider: #192236;
   --focus-ring: #00e0ff;
-  --selection-bg: rgba(0,224,255,0.20);
+  --selection-bg: rgba(0, 224, 255, 0.2);
 }
 
 * {
@@ -43,7 +41,9 @@ body {
   overflow-x: hidden;
   background: var(--surface);
   color: var(--text-primary);
-  font-family: 'Inter', 'SF Pro Text', 'DDIN', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  font-family: "Inter", "SF Pro Text", "DDIN", system-ui, -apple-system,
+    Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+    sans-serif;
 }
 
 body {
