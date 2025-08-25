@@ -142,7 +142,7 @@ Keep responses informative but engaging, and maintain the cockpit atmosphere.`,
   };
 
   return (
-    <div className="flex flex-col h-full bg-card-bg/80 backdrop-blur-sm rounded-lg border border-field-border shadow-lg">
+    <div className="flex flex-col h-full bg-card-bg/80 backdrop-blur-sm rounded-lg border border-field-border shadow-lg max-h-full">
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-divider">
         <div className="flex items-center space-x-3">
@@ -159,7 +159,7 @@ Keep responses informative but engaging, and maintain the cockpit atmosphere.`,
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
         {messages.map((message) => (
           <div
             key={message.id}
