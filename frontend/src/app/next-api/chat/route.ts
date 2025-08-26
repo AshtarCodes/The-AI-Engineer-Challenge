@@ -1,3 +1,4 @@
+import { getServerURL } from "@/utils/getServerURL";
 import { NextRequest, NextResponse } from "next/server";
 
 interface IChatMessage {
@@ -27,11 +28,11 @@ export async function POST(request: NextRequest) {
       api_key: apiKey,
     };
 
-    console.log("Forwarding request to backend:", `/api/chat`);
+    console.log("Forwarding request to backend:", `${getServerURL()}/api/chat`);
     console.log("Request body:", requestBody);
 
     // Forward the request to the backend API
-    const response = await fetch(`/api/chat`, {
+    const response = await fetch(`${getServerURL()}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
