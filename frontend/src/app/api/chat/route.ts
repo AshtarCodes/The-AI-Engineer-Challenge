@@ -1,3 +1,4 @@
+import { getServerURL } from "@/utils/getServerURL";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -20,7 +21,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Forward the request to the backend API
-    const response = await fetch(`${process.env.BACKEND_API_URL}/api/chat`, {
+    const response = await fetch(`${getServerURL()}/py/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
