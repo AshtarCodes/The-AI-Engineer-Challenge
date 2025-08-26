@@ -27,19 +27,19 @@ export default function CockpitPage() {
       {/* Cockpit Grid Layout */}
       <div className="relative w-full h-full grid grid-cols-12 grid-rows-12 gap-0 z-10">
         {/* Top Instrument Panel - spans full width, top 2 rows */}
-        <div className="col-span-12 row-span-2 bg-gradient-to-b from-surface-elev2/80 to-transparent backdrop-blur-sm border-b border-accent/30">
+        <div className="col-span-12 row-span-2 bg-gradient-to-b from-surface-elev2/80 to-transparent backdrop-blur-sm border-b border-accent/30 place-self-center">
           <InstrumentPanel position="top" />
         </div>
 
         {/* Left Side Panel - spans left 2 columns, rows 3-11 */}
-        <div className="col-span-2 row-span-9 bg-gradient-to-r from-surface-elev2/60 to-transparent backdrop-blur-sm border-r border-accent/30">
+        {/* <div className="col-span-2 row-span-9 bg-gradient-to-r from-surface-elev2/60 to-transparent backdrop-blur-sm border-r border-accent/30">
           <InstrumentPanel position="left" />
-        </div>
+        </div> */}
 
         {/* Right Side Panel - spans right 2 columns, rows 3-11 */}
-        <div className="col-span-2 col-start-11 row-span-9 bg-gradient-to-l from-surface-elev2/60 to-transparent backdrop-blur-sm border-l border-accent/30">
+        {/* <div className="col-span-2 col-start-11 row-span-9 bg-gradient-to-l from-surface-elev2/60 to-transparent backdrop-blur-sm border-l border-accent/30">
           <InstrumentPanel position="right" />
-        </div>
+        </div> */}
 
         {/* Center Console Area - spans columns 3-10, rows 3-11 */}
         <div className="col-span-8 col-start-3 row-span-9 p-4">
@@ -49,7 +49,7 @@ export default function CockpitPage() {
         </div>
 
         {/* Bottom Panel - spans full width, bottom 1 row */}
-        <div className="col-span-12 row-span-1 bg-gradient-to-t from-surface-elev2/80 to-transparent backdrop-blur-sm border-t border-accent/30">
+        <div className="col-span-12 row-span-1 bg-gradient-to-t from-surface-elev2/80 to-transparent backdrop-blur-sm border-t border-accent/30 place-self-center">
           <InstrumentPanel position="bottom" />
         </div>
 

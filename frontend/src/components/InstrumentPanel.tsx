@@ -53,12 +53,12 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
   }, []);
 
   const renderTopPanel = () => (
-    <div className="flex justify-between items-center h-full px-8">
+    <div className="flex justify-between items-center h-full px-8 gap-8">
       <div className="flex space-x-8 gap-4">
         <TelemetryDisplay
           label="ALTITUDE"
-          value={`${Math.round(telemetry.altitude).toLocaleString()} m`}
-          unit=""
+          value={`${Math.round(telemetry.altitude).toLocaleString()}`}
+          unit="m"
           status="nominal"
         />
         <TelemetryDisplay
@@ -73,6 +73,12 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
           unit="°C"
           status="nominal"
         />
+        <TelemetryDisplay
+          label="PRESSURE"
+          value={telemetry.pressure.toFixed(1)}
+          unit="hPa"
+          status="nominal"
+        />
       </div>
       <div className="flex gap-2">
         <StatusIndicator label="LIFE SUPPORT" status="nominal" />
@@ -83,7 +89,7 @@ const InstrumentPanel = ({ position }: InstrumentPanelProps) => {
   );
 
   const renderBottomPanel = () => (
-    <div className="flex justify-between items-center h-full px-8 mx-4">
+    <div className="flex justify-between items-center h-full px-8 mx-4 gap-8">
       <div className="flex space-x-8 gap-2">
         <GaugeDisplay
           label="OXYGEN"
@@ -160,7 +166,7 @@ const TelemetryDisplay = ({
   <div className="text-center">
     <div className="text-xs text-text-dim mb-1">{label}</div>
     <div
-      className={`text-lg font-mono ${
+      className={`flex items-center gap-1 ${
         status === "nominal"
           ? "text-text-primary"
           : status === "warning"
@@ -168,8 +174,8 @@ const TelemetryDisplay = ({
           : "text-danger"
       }`}
     >
-      {value}
-      <span className="text-sm text-text-secondary ml-1">{unit}</span>
+      <span className="text-lg font-mono">{value}</span>
+      <span className="text-sm text-text-secondary">{unit}</span>
     </div>
   </div>
 );
