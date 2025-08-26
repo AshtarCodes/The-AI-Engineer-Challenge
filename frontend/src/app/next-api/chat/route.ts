@@ -1,5 +1,6 @@
-import { getServerURL } from "@/utils/getServerURL";
+// import { getServerURL } from "@/utils/getServerURL";
 import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 interface IChatMessage {
   developer_message: string;
@@ -9,6 +10,14 @@ interface IChatMessage {
 
 export async function POST(request: NextRequest) {
   try {
+    const h = await headers();
+    const origin =
+      process.env.NEXT_PUBLIC_IS_LOCAL === "true"
+        ? "http://localhost:8000"
+        : process.env.NEXT_PUBLIC_VERCEL_URL
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+        : `http://${h.get("host")}`;
+
     const body = (await request.json()) as IChatMessage;
 
     // Get API key from environment variable
@@ -28,11 +37,11 @@ export async function POST(request: NextRequest) {
       api_key: apiKey,
     };
 
-    console.log("Forwarding request to backend:", `${getServerURL()}/api/chat`);
+    console.log("Forwarding request to backend:", `${origin}/api/chat`);
     console.log("Request body:", requestBody);
 
     // Forward the request to the backend API
-    const response = await fetch(`${getServerURL()}/api/chat`, {
+    const response = await fetch(`${origin}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
