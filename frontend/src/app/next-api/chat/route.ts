@@ -38,7 +38,6 @@ export async function POST(request: NextRequest) {
     };
 
     console.log("Forwarding request to backend:", `${origin}/api/chat`);
-    console.log("Request body:", requestBody);
 
     // Forward the request to the backend API
     const response = await fetch(`${origin}/api/chat`, {
