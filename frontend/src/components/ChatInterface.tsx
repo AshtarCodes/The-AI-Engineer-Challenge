@@ -58,7 +58,7 @@ const ChatInterface = () => {
     setMessages((prev) => [...prev, streamingMessage]);
 
     try {
-      const response = await fetch("/api/chat", {
+      const response = await fetch("/next-api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

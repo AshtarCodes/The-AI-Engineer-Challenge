@@ -99,7 +99,7 @@ This is a Next.js application with a space-themed UI that:
 ```
 src/
 ├── app/
-│   ├── api/chat/route.ts    # API proxy to backend
+│   ├── next-api/chat/route.ts    # API proxy to backend
 │   ├── globals.css          # Global styles and theme
 │   ├── layout.tsx           # Root layout
 │   └── page.tsx             # Main cockpit page

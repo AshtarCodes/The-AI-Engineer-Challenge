@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Forward the request to the backend API
-    const response = await fetch(`${getServerURL()}/py/api/chat`, {
+    const response = await fetch(`${getServerURL()}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
